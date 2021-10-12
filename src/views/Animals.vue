@@ -1,19 +1,33 @@
 <template>
   <div>
     <animal-form/>
-    <div>
-      {{ animals }}
-    </div>
+    <custom-table :headers="headers" :rows="animals"/>
   </div>
 </template>
 
 <script>
 import AnimalForm from "@/components/AnimalForm";
 import {mapState} from "vuex";
+import CustomTable from "@/components/CustomTable";
 
 export default {
   name: "Animals",
-  components: {AnimalForm},
+  components: {CustomTable, AnimalForm},
+  data() {
+    return {
+      headers: [
+        {
+          name: 'Nazwa',
+          key: 'name',
+          sortable: true,
+        },
+        {
+          name: 'Data dodania',
+          key: 'dateAdd'
+        }
+      ],
+    }
+  },
   computed: {
     ...mapState({
       animals: state => state.animals.animals
