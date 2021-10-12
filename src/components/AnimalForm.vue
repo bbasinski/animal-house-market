@@ -31,11 +31,12 @@ export default {
       name: '',
       errorText: '',
       state: true,
+      disableValidation: false,
     }
   },
   methods: {
     ...mapActions([
-        'addAnimal'
+      'addAnimal'
     ]),
     submitAnimal() {
       if (!this.name.length) {
@@ -55,15 +56,24 @@ export default {
       this.errorText = '';
     },
     clearForm() {
+      this.disableValidation = true;
+
       this.name = '';
 
-      setTimeout(() => {
-        this.clearError();
-      }, 1)
+      this.clearError();
+
+      //enable validation on next tick
+      this.$nextTick(() => {
+        this.disableValidation = false;
+      })
     },
   },
   watch: {
     name(newVal) {
+      if (this.disableValidation) {
+        return;
+      }
+
       newVal.length
           ? this.clearError()
           : this.setError();
