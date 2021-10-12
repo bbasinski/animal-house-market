@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>hlist</div>
 </template>
 
 <script>
 export default {
-  name: "CategoryForm"
+  name: "HomeList"
 }
 </script>
 

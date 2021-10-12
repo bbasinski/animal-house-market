@@ -1,10 +1,11 @@
 <template>
   <div id="app" class="flex flex-row">
     <div id="nav" class="flex flex-col">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home List</router-link>
+      <router-link to="/category">Add Category</router-link>
+      <router-link to="/home">Add home</router-link>
     </div>
-    <div>
+    <div class="p-10 w-full">
       <router-view/>
     </div>
   </div>
@@ -15,7 +16,6 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
@@ -24,6 +24,7 @@
 }
 
 #nav a {
+  @apply my-2 whitespace-nowrap;
   font-weight: bold;
   color: #2c3e50;
 }
