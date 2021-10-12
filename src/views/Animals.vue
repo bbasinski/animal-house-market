@@ -1,15 +1,24 @@
 <template>
   <div>
     <animal-form/>
-    <div>table</div>
+    <div>
+      {{ animals }}
+    </div>
   </div>
 </template>
 
 <script>
 import AnimalForm from "@/components/AnimalForm";
+import {mapState} from "vuex";
+
 export default {
   name: "Animals",
-  components: {AnimalForm}
+  components: {AnimalForm},
+  computed: {
+    ...mapState({
+      animals: state => state.animals.animals
+    })
+  },
 }
 </script>
 

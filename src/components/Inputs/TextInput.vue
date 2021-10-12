@@ -18,7 +18,7 @@
 <script>
 export default {
   name: "TextInput",
-  props: ['id', 'label', 'placeholder', 'state', 'errorText']
+  props: ['id', 'label', 'placeholder', 'state', 'errorText', 'value']
 }
 </script>
 

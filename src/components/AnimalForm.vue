@@ -10,7 +10,7 @@
                   v-model="name"/>
     </div>
     <div class="flex justify-end">
-      <button @click="addAnimal"
+      <button @click="submitAnimal"
               type="button"
               class="bg-green-200 rounded px-3 py-2 text-sm uppercase font-bold hover:bg-green-300">
         Dodaj
@@ -21,6 +21,7 @@
 
 <script>
 import TextInput from "@/components/Inputs/TextInput";
+import {mapActions} from "vuex";
 
 export default {
   name: "AnimalForm",
@@ -33,13 +34,17 @@ export default {
     }
   },
   methods: {
-    addAnimal() {
+    ...mapActions([
+        'addAnimal'
+    ]),
+    submitAnimal() {
       if (!this.name.length) {
         this.setError()
         return;
       }
 
-      console.log('add')
+      this.addAnimal(this.name);
+      this.clearForm();
     },
     setError(message = 'Uzupełnij pole nazwa') {
       this.state = false;
@@ -48,7 +53,14 @@ export default {
     clearError() {
       this.state = true;
       this.errorText = '';
-    }
+    },
+    clearForm() {
+      this.name = '';
+
+      setTimeout(() => {
+        this.clearError();
+      }, 1)
+    },
   },
   watch: {
     name(newVal) {
