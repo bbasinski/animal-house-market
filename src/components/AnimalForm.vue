@@ -1,31 +1,21 @@
 <template>
-  <form class="w-full max-w-lg bg-gray-100 rounded-2xl p-5">
-    <h1>Dodaj zwierzę</h1>
-
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <text-input label="Nazwa"
-                  placeholder="Podaj nazwę zwierzęcia"
-                  :state="state"
-                  :error-text="errorText"
-                  v-model="name"/>
-    </div>
-    <div class="flex justify-end">
-      <button @click="submitAnimal"
-              type="button"
-              class="bg-green-200 rounded px-3 py-2 text-sm uppercase font-bold hover:bg-green-300">
-        Dodaj
-      </button>
-    </div>
-  </form>
+  <form-panel title="Dodaj zwierzę" button="Dodaj" @submit="submitAnimal">
+    <text-input label="Nazwa"
+                placeholder="Podaj nazwę zwierzęcia"
+                :state="state"
+                :error-text="errorText"
+                v-model="name"/>
+  </form-panel>
 </template>
 
 <script>
 import TextInput from "@/components/Inputs/TextInput";
 import {mapActions} from "vuex";
+import FormPanel from "@/components/FormPanel";
 
 export default {
   name: "AnimalForm",
-  components: {TextInput},
+  components: {FormPanel, TextInput},
   data() {
     return {
       name: '',
@@ -39,7 +29,7 @@ export default {
       'addAnimal'
     ]),
     submitAnimal() {
-      if (!this.name.length) {
+      if (!this.name.trim().length) {
         this.setError()
         return;
       }
