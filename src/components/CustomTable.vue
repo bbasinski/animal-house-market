@@ -27,14 +27,14 @@
     </thead>
     <tbody v-if="rows.length">
     <tr v-for="(row, i) in rowsSorted" :key="i">
-      <td v-for="(header, i) in headers" :key="i" class="border border-green-600 text-center">
+      <td v-for="(header, i) in headers" :key="i" class="border border-green-600 p-2 text-sm">
         {{ row[header.key] }}
       </td>
     </tr>
     </tbody>
     <tbody v-else>
     <tr>
-      <td :colspan="headers.length" class="text-center">Nic tu nie ma :(</td>
+      <td :colspan="headers.length" class="text-center p-3">Nic tu nie ma :(</td>
     </tr>
     </tbody>
   </table>
