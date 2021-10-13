@@ -2,7 +2,16 @@ import moment from "moment";
 moment.locale('pl');
 
 const state = {
-  animals: []
+  animals: [
+    {
+      name: 'Pies',
+      dateAdd: moment().format('LLL'),
+    },
+    {
+      name: 'Kot',
+      dateAdd: moment().format('LLL'),
+    },
+  ]
 };
 
 const actions = {
