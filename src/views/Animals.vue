@@ -23,7 +23,8 @@ export default {
         },
         {
           name: 'Data dodania',
-          key: 'dateAdd'
+          key: 'dateAdd',
+          sortable: true,
         }
       ],
     }
