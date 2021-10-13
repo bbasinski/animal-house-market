@@ -7,7 +7,7 @@
       leading-tight focus:outline-none focus:bg-white"
            :class="[state === false && 'border-red-500']"
            :id="id"
-           type="text"
+           type="number"
            v-bind:value="value"
            v-on:input="$emit('input', $event.target.value)"
            :placeholder="placeholder">

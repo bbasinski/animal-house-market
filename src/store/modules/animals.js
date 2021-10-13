@@ -1,4 +1,5 @@
 import moment from "moment";
+moment.locale('pl');
 
 const state = {
   animals: []
@@ -6,8 +7,6 @@ const state = {
 
 const actions = {
   addAnimal({commit}, name) {
-    moment.locale('pl');
-
     commit('ADD_ANIMAL', {
       name: name,
       dateAdd: moment().format('LLL'),
