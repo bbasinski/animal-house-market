@@ -71,14 +71,18 @@ export default {
       const rows = JSON.parse(JSON.stringify(this.rows));
 
       return rows.sort((a, b) => {
-        let nameA = a[this.sort.key].toLowerCase();
-        let nameB = b[this.sort.key].toLowerCase();
+        let paramA = typeof a[this.sort.key] === 'string'
+            ? a[this.sort.key].toLowerCase()
+            : a[this.sort.key];
+        let paramB = typeof a[this.sort.key] === 'string'
+            ? b[this.sort.key].toLowerCase()
+            : b[this.sort.key];
 
-        if (nameA < nameB) {
+        if (paramA < paramB) {
           return this.sort.asc ? -1 : 1;
         }
 
-        if (nameA > nameB) {
+        if (paramA > paramB) {
           return this.sort.asc ? 1 : -1;
         }
 
